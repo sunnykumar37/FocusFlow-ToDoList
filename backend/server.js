@@ -14,6 +14,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/tasks', require('./routes/taskRoutes'));
 
+const { errorHandler } = require('./middleware/errorMiddleware');
+app.use(errorHandler);
+
 const PORT = process.env.PORT || 5000;
 
 // Export app for Vercel
