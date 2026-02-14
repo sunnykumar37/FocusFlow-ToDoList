@@ -32,19 +32,19 @@ export const AuthProvider = ({ children }) => {
     }, [token]);
 
     const register = async (name, email, password) => {
-        await axios.post('/api/auth/register', { name, email, password });
+        await axios.post('/auth/register', { name, email, password });
         // Do not auto-login
     };
 
     const login = async (email, password) => {
-        const res = await axios.post('/api/auth/login', { email, password });
+        const res = await axios.post('/auth/login', { email, password });
         localStorage.setItem('token', res.data.token);
         setToken(res.data.token);
         setUser(res.data);
     };
 
     const googleLogin = async (credential) => {
-        const res = await axios.post('/api/auth/google', { credential });
+        const res = await axios.post('/auth/google', { credential });
         localStorage.setItem('token', res.data.token);
         setToken(res.data.token);
         setUser(res.data);
