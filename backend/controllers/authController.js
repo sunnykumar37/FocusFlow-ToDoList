@@ -11,6 +11,7 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
+    console.log('Register Request:', { name, email, password }); // Debug log
 
     if (!name || !email || !password) {
         res.status(400);
